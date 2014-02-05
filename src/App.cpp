@@ -13,7 +13,7 @@ CApp::~CApp() {
 int CApp::execute() {
 
 	if (!init()) {
-		return 1;
+		return INIT_ERROR;
 	}
 
 	while (!terminated)	{
@@ -27,16 +27,16 @@ int CApp::execute() {
 	return 0;
 }
 
-
 void CApp::cleanup()
 {
+	CSceneManager::activate_scene(CSceneManager::SCENE_NONE);
 
 }
 
 bool CApp::init()
 {
+	CSceneManager::activate_scene(CSceneManager::SCENE_INTRO); 
 	return true;
-
 }
 
 void CApp::loop()

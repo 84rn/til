@@ -7,6 +7,10 @@ public:
 	CApp();
 	~CApp();
 
+	enum Error {
+		INIT_ERROR = 1
+	};
+
 	// Function starts the main app and returns the exit code
 	int execute();
 private:

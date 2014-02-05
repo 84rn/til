@@ -8,6 +8,9 @@ CSceneManager::CSceneManager(void) {
 
 CSceneManager::~CSceneManager(void) {
 
+	 if (scene)
+		scene->deactivate();
+
 }
 
 void CSceneManager::activate_scene(Scenes new_scene) {
@@ -16,15 +19,19 @@ void CSceneManager::activate_scene(Scenes new_scene) {
 		scene->deactivate();
 
 	switch (new_scene) {
+	case SCENE_NONE:
+		scene = 0;
+		break;
 	case SCENE_INTRO:
 		scene = CSceneIntro::GetInstance();		
 		break;
 	case SCENE_MAIN:
-		scene = CSceneIntro::GetInstance();
+		scene = CSceneMain::GetInstance();
 		break;
 	}
 
-	scene->activate();
+	if (scene)
+		scene->activate();
 }
 
 void CSceneManager::on_event() {

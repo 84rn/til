@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "SceneIntro.h"
+#include "SceneMain.h"
 
 class CSceneManager {
 
@@ -10,6 +11,7 @@ public:
 	~CSceneManager(void);
 
 	enum Scenes {
+		SCENE_NONE,
 		SCENE_INTRO,
 		SCENE_MAIN
 	};
