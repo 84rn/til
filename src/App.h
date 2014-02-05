@@ -8,7 +8,8 @@ public:
 	~CApp();
 
 	enum Error {
-		INIT_ERROR = 1
+		NO_ERRORS = 0,
+		INIT_ERROR
 	};
 
 	// Function starts the main app and returns the exit code

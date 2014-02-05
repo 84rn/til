@@ -24,7 +24,7 @@ int CApp::execute() {
 
 	cleanup();
 
-	return 0;
+	return NO_ERRORS;
 }
 
 void CApp::cleanup()
