@@ -1,24 +1,22 @@
 #include "App.h"
+#include "SceneManager.h"
 
-CApp::CApp()
-{
+CApp::CApp() {
+
 	terminated = false;
 }
 
+CApp::~CApp() {
 
-CApp::~CApp()
-{
 }
 
-int CApp::execute()
-{
-	if (!init())
-	{
+int CApp::execute() {
+
+	if (!init()) {
 		return 1;
 	}
 
-	while (!terminated)
-	{
+	while (!terminated)	{
 		on_event();
 		loop();
 		render();
@@ -27,8 +25,8 @@ int CApp::execute()
 	cleanup();
 
 	return 0;
-
 }
+
 
 void CApp::cleanup()
 {
@@ -43,16 +41,16 @@ bool CApp::init()
 
 void CApp::loop()
 {
-
+	CSceneManager::loop();
 }
 
 void CApp::on_event()
 {
-
+	CSceneManager::on_event();
 }
 
 void CApp::render()
 {
-
+	CSceneManager::render();
 }
 

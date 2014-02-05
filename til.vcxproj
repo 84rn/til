@@ -83,11 +83,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\SceneMain.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\SceneIntro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\SceneMain.h" />
+    <ClInclude Include="src\SceneManager.h" />
     <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\SceneIntro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

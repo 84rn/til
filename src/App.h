@@ -1,6 +1,7 @@
 #pragma once
-class CApp
-{
+
+class CApp {
+
 public:
 
 	CApp();
@@ -21,7 +22,7 @@ private:
 	void cleanup();
 
 	bool terminated;
-
-
+	
 };
+
 
