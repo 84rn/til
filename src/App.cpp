@@ -13,7 +13,7 @@ CApp::~CApp() {
 int CApp::execute() {
 
 	if (!init()) {
-		return INIT_ERROR;
+		return Error::INIT_ERROR;
 	}
 
 	while (!terminated)	{
@@ -24,7 +24,7 @@ int CApp::execute() {
 
 	cleanup();
 
-	return NO_ERRORS;
+	return Error::NO_ERRORS;
 }
 
 void CApp::cleanup()
