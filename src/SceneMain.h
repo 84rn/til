@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Scene.h"
-
+#include "ThreadQueue.h"
 class CSceneMain : public CScene {
 
 private:
 	static CSceneMain instance;
-	CSceneMain();
+	CSceneMain();	
 
 public:
 

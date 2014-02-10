@@ -8,14 +8,12 @@ CSceneMain::CSceneMain() {
 }
 
 
-void CSceneMain::loop() {
+void CSceneMain::loop() {	
 
 }
 
 
 void CSceneMain::init() {
-
-
 
 }
 

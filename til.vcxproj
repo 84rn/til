@@ -92,7 +92,6 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\SceneIntro.cpp" />
-    <ClCompile Include="src\ThreadQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SceneMain.h" />
