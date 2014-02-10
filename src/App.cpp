@@ -31,11 +31,14 @@ int CApp::execute() {
 void CApp::cleanup()
 {
 	CSceneManager::activate_scene(CSceneManager::SCENE_NONE);
+	SDL_Quit();
 
 }
 
 bool CApp::init()
 {
+	SDL_Init(SDL_INIT_TIMER);
+
 	CSceneManager::activate_scene(CSceneManager::SCENE_INTRO); 
 	return true;
 }

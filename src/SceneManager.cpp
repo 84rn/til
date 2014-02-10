@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 
 CScene* CSceneManager::scene = 0;
+std::queue<CSceneManager::Scenes> CSceneManager::sceneQueue;
 
 CSceneManager::CSceneManager(void) {
 
