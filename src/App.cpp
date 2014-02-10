@@ -17,6 +17,7 @@ int CApp::execute() {
 	}
 
 	while (!terminated)	{
+		CSceneManager::check_scene_queue();
 		on_event();
 		loop();
 		render();

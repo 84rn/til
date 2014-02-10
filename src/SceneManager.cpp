@@ -13,25 +13,40 @@ CSceneManager::~CSceneManager(void) {
 
 }
 
-void CSceneManager::activate_scene(Scenes new_scene) {
+bool CSceneManager::check_scene_queue() {
 
-	if (scene)
-		scene->deactivate();
+	if (sceneQueue.empty())
+		return false;
+	else {
+		Scenes scene_from_queue = sceneQueue.front();
+		sceneQueue.pop();
 
-	switch (new_scene) {
-	case SCENE_NONE:
-		scene = 0;
-		break;
-	case SCENE_INTRO:
-		scene = CSceneIntro::GetInstance();		
-		break;
-	case SCENE_MAIN:
-		scene = CSceneMain::GetInstance();
-		break;
+		if (scene)
+			scene->deactivate();
+
+		switch (scene_from_queue) {
+		case SCENE_NONE:
+			scene = 0;
+			break;
+		case SCENE_INTRO:
+			scene = CSceneIntro::get_instance();
+			break;
+		case SCENE_MAIN:
+			scene = CSceneMain::get_instance();
+			break;
+		}
+
+		if (scene)
+			scene->activate();
+
+		return true;
 	}
 
-	if (scene)
-		scene->activate();
+}	
+
+void CSceneManager::activate_scene(Scenes new_scene) {
+
+	sceneQueue.push(new_scene);	
 }
 
 void CSceneManager::on_event() {

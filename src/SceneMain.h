@@ -16,7 +16,7 @@ public:
 	void on_event();
 	void activate();
 	void deactivate();
-	inline static CSceneMain* GetInstance() { return &instance; }
+	inline static CSceneMain* get_instance() { return &instance; }
 
 };
 
