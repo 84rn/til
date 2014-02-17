@@ -1,5 +1,7 @@
 #include <iostream>
 #include "SceneMain.h"
+#include "RedditFetcher.h"
+#include "json/json.h"
 
 CSceneMain CSceneMain::instance;
 
@@ -15,6 +17,12 @@ void CSceneMain::loop() {
 
 void CSceneMain::init() {
 
+	CRedditFetcher fetcher("http://reddit.com/r/todayilearned.json");
+
+	if (fetcher.fetch() == 0)
+		std::cout << "OK" << std::endl;
+	else
+		std::cout << "ERROR" << std::endl;
 }
 
 
