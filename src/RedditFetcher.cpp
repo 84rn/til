@@ -20,11 +20,14 @@ CRedditFetcher::~CRedditFetcher(void) {
 }
 
 int CRedditFetcher::fetch() {
+
 	int ret = ::CURLFetcher::fetch();
 
 	Json::Value temp_root;
 	Json::Reader reader;
+
 	if (reader.parse(string_data, temp_root, false))
+
 	if (temp_root["data"]["after"].isString())
 		after = temp_root["data"]["after"].asString();
 

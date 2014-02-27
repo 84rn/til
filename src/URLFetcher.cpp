@@ -4,25 +4,18 @@
 #include <iostream>
 
 
-CURLFetcher::CURLFetcher(void) {
-	data = NULL;
-	error_code = 0;
+CURLFetcher::CURLFetcher(void) : data(NULL), error_code(0) {
+
 }
 
-CURLFetcher::CURLFetcher(std::string str) {
+CURLFetcher::CURLFetcher(std::string str) : data(NULL), error_code(0), url(str) {
 
-	url = str;
-	data = NULL;
-	error_code = 0;
 }
 
-CURLFetcher::CURLFetcher(std::string new_url, std::string server_port, std::string user_password, long auth_type) {
-
-	url = new_url;
-	proxy_server_port = server_port;
-	proxy_user_password = user_password;
-	proxy_auth_type = auth_type;
-	data = NULL;
+CURLFetcher::CURLFetcher(std::string new_url, std::string server_port, std::string user_password, long auth_type) :
+									data(NULL), error_code(0), url(new_url), proxy_auth_type(auth_type), 
+									proxy_user_password(user_password), proxy_server_port(server_port) {
+	
 }
 
 
@@ -38,10 +31,6 @@ void CURLFetcher::set_url(std::string new_s) {
 	url = new_s;
 }
 
-std::string CURLFetcher::get_url() const {
-	return url;
-}
-
 int CURLFetcher::fetch() {
 
 	if (!url.length()) {
@@ -53,7 +42,6 @@ int CURLFetcher::fetch() {
 	CURL* handle = curl_easy_init();
 	char buf[1000];
 	string_data = "";
-
 
 //	curl_easy_setopt(handle, CURLOPT_VERBOSE, 1);
 
@@ -81,15 +69,6 @@ int CURLFetcher::fetch() {
 	error_msg = std::string(buf);
 	error_code = ret;
 
-	return error_code;
-}
-
-
-std::string CURLFetcher::get_error_msg() const {
-	return error_msg;
-}
-
-int CURLFetcher::get_error_code() const {
 	return error_code;
 }
 

@@ -11,10 +11,12 @@ public:
 	virtual ~CURLFetcher(void);
 
 	void set_url(std::string);
-	virtual std::string get_url() const;
+
+	inline virtual std::string get_url() const { return url; };	
+	inline std::string get_error_msg() const { return error_msg; };
+	inline int get_error_code() const { return error_code; };
+
 	virtual int fetch();
-	std::string get_error_msg() const;
-	int get_error_code() const;
 
 	friend std::ostream& operator<<(std::ostream& stream, CURLFetcher& fetcher);
 	friend std::string& operator<<(std::string& string, CURLFetcher& fetcher);	

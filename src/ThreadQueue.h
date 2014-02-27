@@ -13,43 +13,55 @@ public:
 	T pop();
 	void push(std::vector<T>);
 	bool empty();
+	int size();
 
 private:
-	void start();
-	void stop();
 
-	SDL_mutex* mutex;
+	SDL_sem* semaphore;
 	std::queue<T> _queue;
 };
 
 template<typename T>
 CThreadQueue<T>::CThreadQueue() {
 
-	mutex = SDL_CreateMutex();
+	semaphore = SDL_CreateSemaphore(1);
 }
 
 
 template<typename T>
 CThreadQueue<T>::~CThreadQueue() {
 
-	if (mutex)
-		SDL_DestroyMutex(mutex);
+	if (semaphore)
+		SDL_DestroySemaphore(semaphore);
 }
 
 template<typename T>
-void CThreadQueue<T>::push(T element) {
-
-	start();
+void CThreadQueue<T>::push(T element) {	
+	
+	SDL_SemWait(semaphore);
 
 	_queue.push(element);
 
-	stop();
+	SDL_SemPost(semaphore);
+}
+
+template<typename T>
+int CThreadQueue<T>::size() {
+
+	int ret;
+	SDL_SemWait(semaphore);
+
+	ret = _queue.size();
+	
+	SDL_SemPost(semaphore);
+
+	return ret;
 }
 
 template<typename T>
 void CThreadQueue<T>::push(std::vector<T> vec) {
 
-	start();
+	SDL_SemWait(semaphore);
 
 	while (!vec.empty()) {
 		T element = vec[0];
@@ -58,33 +70,33 @@ void CThreadQueue<T>::push(std::vector<T> vec) {
 		_queue.push(element);
 	}
 
-	stop();
+	SDL_SemPost(semaphore);
+}
+
+template<typename T>
+bool CThreadQueue<T>::empty() {
+
+	bool ret;
+	SDL_SemWait(semaphore);
+
+	ret = _queue.empty();
+	
+	SDL_SemPost(semaphore);
+
+	return ret;
+
+
 }
 
 template<typename T>
 T CThreadQueue<T>::pop() {
 
-	start();
+	SDL_SemWait(semaphore);
 
 	T ret = _queue.front();
-	_queue.pop();
+	_queue.pop();	
 
-	stop();
+	SDL_SemPost(semaphore);
 
-	return T;
+	return ret;
 }
-
-template<typename T>
-void CThreadQueue<T>::start() {
-
-	while (SDL_LockMutex(mutex) != 0) {
-		SDL_Delay(10);
-	}
-}
-
-template<typename T>
-void CThreadQueue<T>::stop() {
-
-	SDL_UnlockMutex(mutex);
-}
-

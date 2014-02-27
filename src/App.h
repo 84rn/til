@@ -1,5 +1,4 @@
 #pragma once
-
 #include "SDL/SDL.h"
 
 class CApp {
@@ -16,6 +15,7 @@ public:
 
 	// Function starts the main app and returns the exit code
 	int execute();
+
 private:
 	// Initialization
 	bool init();
@@ -29,6 +29,11 @@ private:
 	void cleanup();
 
 	bool terminated;
+
+	// Main window handle
+	SDL_Window* win;
+	// Renderer handle
+	SDL_Renderer* ren;
 	
 };
 

@@ -1,0 +1,26 @@
+#include <windows.h>
+#include <commctrl.h>
+#include <richedit.h>
+#include "resource.h"
+
+
+
+
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+IDR_INTRO_JPG      RCDATA      "intro.jpg"
+IDR_FONT      RCDATA      "font.ttf"
+IDR_TAP0      RCDATA      "tap0.jpg"
+IDR_TAP1      RCDATA      "tap1.jpg"
+IDR_TAP2      RCDATA      "tap2.jpg"
+IDR_TAP3      RCDATA      "tap3.jpg"
+IDR_TAP4      RCDATA      "tap4.jpg"
+IDR_TAP5      RCDATA      "tap5.jpg"
+
+
+
+
+//
+// Icon resources
+//
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+IDI_ICON           ICON           "icon.ico"
